@@ -89,6 +89,9 @@ function calculateGPA() {
     let classCount = 0;
 
     classes.forEach(course => {
+        // Skip exempted courses (they should not be included in GPA calculation)
+        if (course.exempt) return;
+
         const average = calculateAverage(course);
 
         if (average === null) return;
